@@ -93,6 +93,19 @@ jobs:
             rsync
 
       # ============================================================
+      # FIX NSJAIL SANDBOX (AppArmor unprivileged userns - Ubuntu 24.04)
+      # ============================================================
+      - name: Fix nsjail sandbox (AppArmor restriction Ubuntu 24.04)
+        run: |
+          echo "Sebelum fix:"
+          sysctl -n kernel.apparmor_restrict_unprivileged_userns || true
+
+          sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+
+          echo "Setelah fix:"
+          sysctl -n kernel.apparmor_restrict_unprivileged_userns
+
+      # ============================================================
       # REPO
       # ============================================================
       - name: Install repo
@@ -350,3 +363,4 @@ jobs:
             /home/runner/lineage20/out/target/product/${{ github.event.inputs.device }}/*.zip
           if-no-files-found: warn
           retention-days: 7
+          
