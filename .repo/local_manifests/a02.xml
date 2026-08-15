@@ -4,10 +4,8 @@
     <remote
         name="sinaralam"
         fetch="https://github.com/sinaralam/"
-        revision="a13_vendor"
     />
 
-    <!-- Device tree -->
     <project
         name="vendor"
         path="device/samsung/a02"
@@ -15,7 +13,6 @@
         revision="a13_vendor"
     />
 
-    <!-- Vendor blobs -->
     <project
         name="vendor"
         path="vendor/samsung/a02"
